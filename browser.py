@@ -80,7 +80,7 @@ def install_driver(chrome_version, this_os):
     @type this_os: string
     """
     print("installing ChromeDriver...")
-    version = requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{}'.format(chrome_version)).text
+    version = requests.get('https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{}'.format(chrome_version[:2])).text
     r = requests.get('https://chromedriver.storage.googleapis.com/{}/chromedriver_{}.zip'.format(version, this_os))
     # https://stackoverflow.com/a/14260592
     zipfile.ZipFile(io.BytesIO(r.content)).extractall(os.path.dirname(os.path.abspath(__file__)))
